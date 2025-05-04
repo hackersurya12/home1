@@ -18,8 +18,6 @@
             text-align: center;
         }
 
-        /*    <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-   <!-- This Web Free By #enzo #dev--> */
         .wave-container {
             position: relative;
             height: 80px;
@@ -81,10 +79,8 @@
             border: 2px solid transparent;
             position: relative;
             animation: pulse 2.5s infinite;
-            backdrop-filter: blur(10px); /*    <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-            <!-- This Web Free By #enzo #dev--> */
-            background: rgba(255, 255, 255, 0.2); /*    <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-            <!-- This Web Free By #enzo #dev--> */
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .job-info {
@@ -127,8 +123,6 @@
             cursor: pointer;
         }
 
-        /*    <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-   <!-- This Web Free By #enzo #dev--> */
         .green { border-color: #4caf50; }
         .yellow { border-color: #ffcc00; }
         .red { border-color: #ff4c4c; }
@@ -144,8 +138,6 @@
         .apply-red { background: #ff4c4c; }
         .apply-blue { background: #007bff; }
 
-        /*    <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-   <!-- This Web Free By #enzo #dev--> */
         @keyframes pulse {
             50%, 50% { transform: scale(1); }
             50% { transform: scale(1.1); }
@@ -167,7 +159,7 @@
         .back-btn {
             position: fixed;
             top: 20px;
-            right: 20px;
+            left: 20px;
             z-index: 1001;
             padding: 10px 15px;
             background: #ff4c4c;
@@ -176,14 +168,13 @@
             border-radius: 5px;
             cursor: pointer;
             display: none;
+            font-weight: bold;
         }
 
     </style>
 </head>
 <body>
 
-       <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-   <!-- This Web Free By #enzo #dev-->
     <div class="wave-container">
         <h2 class="wave-text">
             <span>W</span>
@@ -202,8 +193,6 @@
 
     <p>SELECT YOUR GAME </p>
 
-      <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-   <!-- This Web Free By #enzo #dev-->
     <div class="card green">
         <div class="job-info">
             <span class="job-type">Analys Sistem</span>
@@ -213,8 +202,6 @@
         <a href="#" onclick="openIframe('https://hackersurya12.github.io/30swingo/')" class="apply-btn apply-green">Play Now →</a>
     </div>
 
-     <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-   <!-- This Web Free By #enzo #dev-->
     <div class="card yellow">
         <div class="job-info">
             <span class="job-type">Api Based</span>
@@ -224,8 +211,6 @@
         <a href="#" onclick="openIframe('https://hackersurya12.github.io/1mwingo-/')" class="apply-btn apply-yellow">Play Now →</a>
     </div>
 
-      <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-   <!-- This Web Free By #enzo #dev-->
     <div class="card red">
         <div class="job-info">
             <span class="job-type">Ai Calculation</span>
@@ -235,8 +220,6 @@
         <a href="#" onclick="openIframe('https://hackersurya12.github.io/K3/')" class="apply-btn apply-red">Play Now →</a>
     </div>
 
-       <!--Ye website Team SRS ne leak ki hai aur aise saari websites ka source bhi leak hoga. DM karein for more source code aur follow karein @enzosrs -->
-   <!-- This Web Free By #enzo #dev-->
     <div class="card blue">
         <div class="job-info">
             <span class="job-type">Calculation</span>
@@ -248,7 +231,7 @@
 
     <!-- Iframe container -->
     <iframe id="gameFrame"></iframe>
-    <button class="back-btn" onclick="closeIframe()">← Back to Dashboard</button>
+    <button class="back-btn" onclick="closeIframe()">← Back</button>
 
     <script>
         function openIframe(url) {
