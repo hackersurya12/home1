@@ -3,146 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME PAGE</title>
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;600&display=swap" rel="stylesheet">
+    <title>Gaming Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --success: #00b894;
+            --danger: #d63031;
+            --warning: #fdcb6e;
+            --info: #0984e3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
-            font-family: 'El Messiri', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2d2d44);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #6c5ce7, #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: var(--secondary);
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-image {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .game-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--danger);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .game-content {
+            padding: 20px;
+        }
+        
+        .game-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .game-description {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .game-meta {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgmqZGh4M1jDost5bvUtpgZkI91gHMWowKXhR4awaqoEWsg2NZoOYlSGXs&s=10') no-repeat center center/cover; 
+            margin-bottom: 15px;
+        }
+        
+        .game-type {
+            font-size: 0.8rem;
+            background: rgba(108, 92, 231, 0.2);
+            color: var(--secondary);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .game-play-btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
             text-align: center;
         }
-
-        .wave-container {
-            position: relative;
-            height: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+        
+        .game-play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
         }
         
-        .wave-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: #007bff;
-            position: relative;
-            display: flex;
-        }
-        
-        .wave-text span {
-            display: inline-block;
-            animation: wave-animation 1.5s infinite ease-in-out;
-        }
-        
-        .wave-text span:nth-child(1) { animation-delay: 0s; }
-        .wave-text span:nth-child(2) { animation-delay: 0.1s; }
-        .wave-text span:nth-child(3) { animation-delay: 0.2s; }
-        .wave-text span:nth-child(4) { animation-delay: 0.3s; }
-        .wave-text span:nth-child(5) { animation-delay: 0.4s; }
-        .wave-text span:nth-child(6) { animation-delay: 0.5s; }
-        .wave-text span:nth-child(7) { animation-delay: 0.6s; }
-        .wave-text span:nth-child(8) { animation-delay: 0.7s; }
-        .wave-text span:nth-child(9) { animation-delay: 0.8s; }
-        .wave-text span:nth-child(10) { animation-delay: 0.9s; }
-        .wave-text span:nth-child(11) { animation-delay: 1s; }
-        
-        @keyframes wave-animation {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        /* Card Styling */
-        p {
-            font-size: 14px;
-            color: #ffffff;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 380px;
-            padding: 15px;
-            border-radius: 12px;
-            margin: 10px 0;
-            font-size: 17px;
-            font-weight: 600;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            border: 2px solid transparent;
-            position: relative;
-            animation: pulse 2.5s infinite;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .job-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        
-        .job-type {
-            font-size: 14px;
-            font-weight: bold;
-            opacity: 0.8;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-
-        .job-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .tag {
-            font-size: 12px;
-            padding: 5px 10px;
-            border-radius: 12px;
-            font-weight: bold;
-            margin-top: 5px;
-            display: inline-block;
-            color: white;
-        }
-
-        .apply-btn {
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            text-decoration: none;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .green { border-color: #4caf50; }
-        .yellow { border-color: #ffcc00; }
-        .red { border-color: #ff4c4c; }
-        .blue { border-color: #62a4f9; }
-
-        .tag-green { background: #4caf50; }
-        .tag-yellow { background: #ffcc00; }
-        .tag-red { background: #ff4c4c; }
-        .tag-blue { background: #007bff; }
-
-        .apply-green { background: #4caf50; }
-        .apply-yellow { background: #ff9800; }
-        .apply-red { background: #ff4c4c; }
-        .apply-blue { background: #007bff; }
-
-        @keyframes pulse {
-            50%, 50% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
         /* Iframe styling */
         iframe {
             width: 100%;
@@ -155,84 +165,128 @@
             z-index: 1000;
             background: white;
         }
-
+        
         .back-btn {
             position: fixed;
             top: 20px;
             left: 20px;
             z-index: 1001;
-            padding: 10px 15px;
-            background: #ff4c4c;
+            padding: 10px 20px;
+            background: var(--danger);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             display: none;
-            font-weight: bold;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(214, 48, 49, 0.3);
+            transition: all 0.3s ease;
         }
-
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(214, 48, 49, 0.4);
+        }
+        
+        .back-btn i {
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <div class="wave-container">
-        <h2 class="wave-text">
-            <span>W</span>
-            <span>E</span>
-            <span>L</span>
-            <span>C</span>
-            <span>O</span>
-            <span>M</span>
-            <span>E</span>
-            <span>&nbsp;</span>
-            <span>T</span>
-            <span>O</span>
-            <span>&nbsp;AK&nbsp;DASHBOARD</span>
-        </h2>
-    </div>
-
-    <p>SELECT YOUR GAME </p>
-
-    <div class="card green">
-        <div class="job-info">
-            <span class="job-type">Analys Sistem</span>
-            <span class="job-title">WINGO 30 SECOND</span>
-            <span class="tag tag-green">Big-Small</span>
+    <div class="container">
+        <header>
+            <div class="logo">𝖠𝖪 𝖯𝖱𝖤𝖣𝖨𝖢𝖳𝖮𝖱 </div>
+            <div class="subtitle">𝙆𝙉𝙊𝘾𝙆𝙊𝙐𝙏 𝘾𝘼𝙇𝘾𝙐𝙇𝘼𝙏𝙄𝙊𝙉</div>
+        </header>
+        
+        <div class="games-grid">
+            <!-- Game 1 -->
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                    <span class="game-badge">HOT</span>
+                </div>
+                <div class="game-content">
+                    <h3 class="game-title">WINGO 30 SECOND</h3>
+                    <p class="game-description">Fast-paced 30-second rounds with big-small betting options for quick wins.</p>
+                    <div class="game-meta">
+                        <span class="game-type">Big-Small</span>
+                    </div>
+                    <button onclick="openIframe('https://hackersurya12.github.io/30swingo/')" class="game-play-btn">
+                        <i class="fas fa-play"></i> Play Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Game 2 -->
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                    <span class="game-badge">NEW</span>
+                </div>
+                <div class="game-content">
+                    <h3 class="game-title">WINGO 1 MINUTE</h3>
+                    <p class="game-description">Strategic 1-minute rounds with API-based results for calculated gameplay.</p>
+                    <div class="game-meta">
+                        <span class="game-type">Big-Small</span>
+                    </div>
+                    <button onclick="openIframe('https://hackersurya12.github.io/1mwingo-/')" class="game-play-btn">
+                        <i class="fas fa-play"></i> Play Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Game 3 -->
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                    <span class="game-badge">AI</span>
+                </div>
+                <div class="game-content">
+                    <h3 class="game-title">K3</h3>
+                    <p class="game-description">AI-powered odd-even prediction game with smart calculation features.</p>
+                    <div class="game-meta">
+                        <span class="game-type">Odd-Even</span>
+                    </div>
+                    <button onclick="openIframe('https://hackersurya12.github.io/K3/')" class="game-play-btn">
+                        <i class="fas fa-play"></i> Play Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Game 4 -->
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                    <span class="game-badge">COLOR</span>
+                </div>
+                <div class="game-content">
+                    <h3 class="game-title">1M WINGO COLOR</h3>
+                    <p class="game-description">Color prediction game with instant results and multiple betting options.</p>
+                    <div class="game-meta">
+                        <span class="game-type">Green-Red</span>
+                    </div>
+                    <button onclick="openIframe('https://hackersurya12.github.io/Colour-server/')" class="game-play-btn">
+                        <i class="fas fa-play"></i> Play Now
+                    </button>
+                </div>
+            </div>
         </div>
-        <a href="#" onclick="openIframe('https://hackersurya12.github.io/30swingo/')" class="apply-btn apply-green">Play Now →</a>
     </div>
-
-    <div class="card yellow">
-        <div class="job-info">
-            <span class="job-type">Api Based</span>
-            <span class="job-title">WINGO 1 MINUTES</span>
-            <span class="tag tag-yellow">Big-Small</span>
-        </div>
-        <a href="#" onclick="openIframe('https://hackersurya12.github.io/1mwingo-/')" class="apply-btn apply-yellow">Play Now →</a>
-    </div>
-
-    <div class="card red">
-        <div class="job-info">
-            <span class="job-type">Ai Calculation</span>
-            <span class="job-title">K3 </span>
-            <span class="tag tag-red">Odd-Even</span>
-        </div>
-        <a href="#" onclick="openIframe('https://hackersurya12.github.io/K3/')" class="apply-btn apply-red">Play Now →</a>
-    </div>
-
-    <div class="card blue">
-        <div class="job-info">
-            <span class="job-type">Calculation</span>
-            <span class="job-title">1M WINGO COLOUR</span>
-            <span class="tag tag-blue">GREEN-RED</span>
-        </div>
-        <a href="#" onclick="openIframe('https://hackersurya12.github.io/Colour-server/')" class="apply-btn apply-blue">Play Now →</a>
-    </div>
-
+    
     <!-- Iframe container -->
     <iframe id="gameFrame"></iframe>
-    <button class="back-btn" onclick="closeIframe()">← Back</button>
-
+    <button class="back-btn" onclick="closeIframe()">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </button>
+    
     <script>
         function openIframe(url) {
             document.getElementById('gameFrame').style.display = 'block';
@@ -240,7 +294,7 @@
             document.querySelector('.back-btn').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
-
+        
         function closeIframe() {
             document.getElementById('gameFrame').style.display = 'none';
             document.getElementById('gameFrame').src = '';
@@ -248,6 +302,5 @@
             document.body.style.overflow = 'auto';
         }
     </script>
-
 </body>
 </html>
