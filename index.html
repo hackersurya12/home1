@@ -207,6 +207,21 @@
             font-weight: bold;
         }
 
+        .dashboard-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            font-weight: bold;
+        }
+
         .user-info {
             position: absolute;
             top: 20px;
@@ -324,12 +339,14 @@
     <!-- Iframe container -->
     <iframe id="gameFrame"></iframe>
     <button class="back-btn" onclick="closeIframe()"><i class="fas fa-arrow-left"></i> Back</button>
+    <button class="dashboard-btn" onclick="closeIframe()"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
 
     <script>
         function openIframe(url) {
             document.getElementById('gameFrame').style.display = 'block';
             document.getElementById('gameFrame').src = url;
             document.querySelector('.back-btn').style.display = 'block';
+            document.querySelector('.dashboard-btn').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
@@ -337,6 +354,7 @@
             document.getElementById('gameFrame').style.display = 'none';
             document.getElementById('gameFrame').src = '';
             document.querySelector('.back-btn').style.display = 'none';
+            document.querySelector('.dashboard-btn').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
     </script>
