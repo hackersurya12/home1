@@ -28,6 +28,7 @@
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
         }
 
         .wave-container {
@@ -163,16 +164,19 @@
         .yellow { border-color: #ffcc00; }
         .red { border-color: #ff4c4c; }
         .blue { border-color: #62a4f9; }
+        .purple { border-color: #9c27b0; }
 
         .tag-green { background: #4caf50; }
         .tag-yellow { background: #ffcc00; }
         .tag-red { background: #ff4c4c; }
         .tag-blue { background: #007bff; }
+        .tag-purple { background: #9c27b0; }
 
         .play-green { background: #4caf50; }
         .play-yellow { background: #ff9800; }
         .play-red { background: #ff4c4c; }
         .play-blue { background: #007bff; }
+        .play-purple { background: #9c27b0; }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
@@ -250,8 +254,66 @@
             justify-content: center;
         }
 
+        /* New section styles */
+        .stats-container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+
+        .stats-title {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            margin: 5px 0;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .win { color: #4caf50; }
+        .loss { color: #ff4c4c; }
+        .profit { color: #ffcc00; }
+        .streak { color: #9c27b0; }
+
         @media (max-width: 600px) {
-            .container {
+            .container, .stats-container {
                 padding: 20px;
                 width: 90%;
             }
@@ -265,6 +327,10 @@
                 margin-bottom: 15px;
                 justify-content: flex-end;
                 width: 100%;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -333,8 +399,19 @@
                 </div>
                 <button onclick="openIframe('https://hackersurya12.github.io/Colour-server/')" class="play-btn play-blue">Play <i class="fas fa-arrow-right"></i></button>
             </div>
+            
+            <div class="card purple">
+                <div class="game-info">
+                    <span class="game-type"><i class="fas fa-chart-line"></i> Ai Prediction System</span>
+                    <span class="game-title">AK AI</span>
+                    <span class="tag tag-purple">Big-Small</span>
+                </div>
+                <button onclick="openIframe('https://hackersurya12.github.io/TKGweb/')" class="play-btn play-purple">Play <i class="fas fa-arrow-right"></i></button>
+            </div>
         </div>
     </div>
+
+    
 
     <!-- Iframe container -->
     <iframe id="gameFrame"></iframe>
@@ -345,7 +422,6 @@
         function openIframe(url) {
             document.getElementById('gameFrame').style.display = 'block';
             document.getElementById('gameFrame').src = url;
-            //document.querySelector('.back-btn').style.display = 'block';
             document.querySelector('.dashboard-btn').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -357,6 +433,27 @@
             document.querySelector('.dashboard-btn').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+        
+        // Animate stats on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const statValues = document.querySelectorAll('.stat-value');
+            
+            statValues.forEach(value => {
+                const target = +value.innerText.replace(/[^0-9]/g, '');
+                const suffix = value.innerText.replace(/[0-9]/g, '');
+                let current = 0;
+                const increment = target / 20;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        current = target;
+                    }
+                    value.innerText = Math.floor(current) + suffix;
+                }, 50);
+            });
+        });
     </script>
 
 </body>
