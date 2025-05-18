@@ -14,21 +14,23 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLbbSTOqV0VGzhxx9QO5woJjCj4O6YsO-1nQF36tRZ-SN4-635brJQJpc&s=10') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             text-align: center;
             padding: 20px;
             margin: 0;
+            color: white;
         }
 
         .container {
             width: 100%;
             max-width: 500px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
+            position: relative;
         }
 
         .wave-container {
@@ -44,7 +46,7 @@
         .wave-text {
             font-size: 24px;
             font-weight: bold;
-            color: #007bff;
+            color: #4caf50;
             position: relative;
             display: flex;
         }
@@ -73,7 +75,7 @@
 
         .subtitle {
             font-size: 14px;
-            color: #ffffff;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 25px;
             font-weight: bold;
         }
@@ -93,17 +95,34 @@
             border-radius: 12px;
             font-size: 17px;
             font-weight: 600;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
             border: 2px solid transparent;
             position: relative;
             animation: pulse 2.5s infinite;
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
 
         .card:hover {
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
         }
 
         .game-info {
@@ -111,12 +130,13 @@
             flex-direction: column;
             align-items: flex-start;
             text-align: left;
+            z-index: 1;
         }
         
         .game-type {
             font-size: 14px;
             font-weight: bold;
-            opacity: 0.8;
+            opacity: 0.9;
             margin-bottom: 5px;
             color: #fff;
             display: flex;
@@ -128,6 +148,7 @@
             font-size: 18px;
             font-weight: bold;
             color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .tag {
@@ -138,6 +159,7 @@
             margin-top: 5px;
             display: inline-block;
             color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .play-btn {
@@ -152,11 +174,14 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .play-btn:hover {
-            opacity: 0.9;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         /* Color Classes */
@@ -167,7 +192,7 @@
         .purple { border-color: #9c27b0; }
 
         .tag-green { background: #4caf50; }
-        .tag-yellow { background: #ffcc00; }
+        .tag-yellow { background: #ffcc00; color: #333; }
         .tag-red { background: #ff4c4c; }
         .tag-blue { background: #007bff; }
         .tag-purple { background: #9c27b0; }
@@ -196,34 +221,36 @@
             background: white;
         }
 
-        .back-btn {
+        .back-btn, .dashboard-btn {
             position: fixed;
-            top: 20px;
-            right: 20px;
             z-index: 1001;
-            padding: 10px 15px;
-            background: #ff4c4c;
+            padding: 12px 20px;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             display: none;
             font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn {
+            top: 20px;
+            right: 20px;
+            background: #ff4c4c;
         }
 
         .dashboard-btn {
-            position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 1001;
-            padding: 10px 15px;
             background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: none;
-            font-weight: bold;
+        }
+
+        .back-btn:hover, .dashboard-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
 
         .user-info {
@@ -235,34 +262,44 @@
             gap: 10px;
             color: white;
             font-weight: bold;
+            z-index: 10;
         }
 
         .balance {
             background: rgba(255, 255, 255, 0.2);
-            padding: 5px 10px;
+            padding: 8px 15px;
             border-radius: 20px;
             font-size: 14px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .avatar {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
         }
 
-        /* New section styles */
+        .avatar:hover {
+            transform: scale(1.1);
+        }
+
+        /* Stats section styles */
         .stats-container {
             width: 100%;
             max-width: 500px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             margin-top: 20px;
         }
 
@@ -275,6 +312,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .stats-grid {
@@ -288,11 +326,15 @@
             border-radius: 10px;
             padding: 15px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
         }
 
         .stat-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .stat-value {
@@ -300,6 +342,7 @@
             font-weight: bold;
             color: #fff;
             margin: 5px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .stat-label {
@@ -311,6 +354,31 @@
         .loss { color: #ff4c4c; }
         .profit { color: #ffcc00; }
         .streak { color: #9c27b0; }
+
+        /* Notification badge */
+        .notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4c4c;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+        }
 
         @media (max-width: 600px) {
             .container, .stats-container {
@@ -332,15 +400,59 @@
             .stats-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .game-title {
+                font-size: 16px;
+            }
+            
+            .play-btn {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+        }
+
+        /* Loading animation */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #4caf50;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        .loader-text {
+            color: white;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
 
     <div class="user-info">
-        <div class="balance">WELLCOME TOPAID USER</div>
+        <div class="balance">WELCOME TOPAID USER</div>
         <div class="avatar">
             <i class="fas fa-user"></i>
+            <span class="notificaion"></span>
         </div>
     </div>
 
@@ -364,13 +476,22 @@
         <p class="subtitle">Select your game type and play</p>
 
         <div class="games-container">
-            <div class="card green">
+          <div class="card green">
                 <div class="game-info">
                     <span class="game-type"><i class="fas fa-bolt"></i> Analys Sistem</span>
                     <span class="game-title">WINGO 30 SECOND</span>
                     <span class="tag tag-green">Big-Small</span>
                 </div>
                 <button onclick="openIframe('https://hackersurya12.github.io/30swingo/')" class="play-btn play-green">Play <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="card red">
+                <div class="game-info">
+                    <span class="game-type"><i class="fas fa-bolt"></i> Analys Sistem</span>
+                    <span class="game-title">WINGO 1M BOT</span>
+                    <span class="tag tag-red">Big-Small</span>
+                </div>
+                <button onclick="openIframe('https://hackersurya12.github.io/Tksbot/')" class="play-btn play-red">Play <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <div class="card yellow">
@@ -412,18 +533,35 @@
     </div>
 
     
+                
+
+    <div class="footer">
+        © 2023 AK Dashboard | Premium Prediction System
+    </div>
 
     <!-- Iframe container -->
     <iframe id="gameFrame"></iframe>
     <button class="back-btn" onclick="closeIframe()"><i class="fas fa-arrow-left"></i> Back</button>
     <button class="dashboard-btn" onclick="closeIframe()"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
 
+    <!-- Loading animation -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Loading Game...</div>
+    </div>
+
     <script>
         function openIframe(url) {
-            document.getElementById('gameFrame').style.display = 'block';
-            document.getElementById('gameFrame').src = url;
-            document.querySelector('.dashboard-btn').style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            document.getElementById('loader').style.display = 'flex';
+            
+            setTimeout(() => {
+                document.getElementById('gameFrame').style.display = 'block';
+                document.getElementById('gameFrame').src = url;
+                document.querySelector('.back-btn').style.display = 'block';
+                document.querySelector('.dashboard-btn').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                document.getElementById('loader').style.display = 'none';
+            }, 1500);
         }
 
         function closeIframe() {
@@ -450,10 +588,33 @@
                         clearInterval(timer);
                         current = target;
                     }
-                    value.innerText = Math.floor(current) + suffix;
+                    
+                    if (value.classList.contains('profit')) {
+                        value.innerText = '₹' + Math.floor(current).toLocaleString() + suffix;
+                    } else {
+                        value.innerText = Math.floor(current) + suffix;
+                    }
                 }, 50);
             });
+            
+            // Add click effect to cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('play-btn')) {
+                        this.querySelector('.play-btn').click();
+                    }
+                });
+            });
         });
+        
+        // Show notification alert
+        setTimeout(() => {
+            const notification = document.querySelector('.notification');
+            if (notification) {
+                notification.style.animation = 'pulse 1s infinite alternate';
+            }
+        }, 2000);
     </script>
 
 </body>
